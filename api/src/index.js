@@ -1,12 +1,23 @@
 const express = require('express');
+const {connectDB} = require("./helpers/db");
+const {port, host, db} = require("./configuration");
+
 const app = express();
-const port = process.env.PORT;
-const host = process.env.HOST;
+
 
 app.get('/test', (req, res) => {
     res.send('Our api server is working correctly')
 })
 
-app.listen(port, ()=>{
-    console.log(`Started api service on port ${port} and host ${host}`)
-})
+const startServer = () => {
+    app.listen(port, ()=>{
+        console.log(`Started api service on port ${port}`)
+        console.log(`Started api service on host ${host}`)
+        console.log(`Our database ${db}`)
+    })
+}
+
+connectDB()
+    .then(startServer)
+    .catch(console.log)
+
