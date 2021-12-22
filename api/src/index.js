@@ -12,12 +12,12 @@ const postSchema = new mongoose.Schema({
 const Post = mongoose.model('Post', postSchema);
 
 app.get('/test', (req, res) => {
-    res.send('Our api server is working correctly')
+    res.send('Our api server is working correctly.')
 })
 
 const startServer = () => {
     app.listen(port, ()=>{
-        console.log(`Started api service on port ${port}`)
+        console.log(`Started api service on port!@@@ ${port}`)
         console.log(`Started api service on host ${host}`)
         console.log(`Our database ${db}`)
 
@@ -29,7 +29,7 @@ const startServer = () => {
                 return
             }
 
-            console.log('savedSilence', savedSilence)
+            console.log('savedSilence!', savedSilence)
         }
 )
 
