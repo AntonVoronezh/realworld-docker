@@ -7,6 +7,13 @@ app.get('/test', (req, res) => {
     res.send('Our auth server is working correctly.')
 })
 
+app.get('/api/currentUser', (req, res) => {
+    res.json({
+        "email": "fooooo@gggg.tu",
+        "id": "1234"
+    })
+})
+
 const startServer = () => {
     app.listen(port, ()=> {
         console.log(`Started auth service on port! ${port}`)

@@ -1,6 +1,6 @@
 const express = require('express');
 const {connectDB} = require("./helpers/db");
-const {port, host, db} = require("./configuration");
+const {port, host, db, authApiUrl} = require("./configuration");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -13,6 +13,11 @@ const Post = mongoose.model('Post', postSchema);
 
 app.get('/test', (req, res) => {
     res.send('Our api server is working correctly.')
+})
+
+app.get('/testwithcurrentuser', (req, res) => {
+    console.log("authApiUrl", authApiUrl);
+    res.json({testwithcurrentuser: true});
 })
 
 const startServer = () => {
